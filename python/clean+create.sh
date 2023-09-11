@@ -2,7 +2,7 @@ podman stop container_python_1
 podman rm container_python_1
 podman rmi image_python_1
 
-cd /home/pi32/Documents/Code/pi32/python
+cd /home/pi32/Code/pi32/python
 
 uid=1001
 gid=1002

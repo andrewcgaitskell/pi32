@@ -8,9 +8,9 @@ RUN apt-get install -y libmariadb-dev
 
 WORKDIR /workdir
 
-ARG USERNAME=agaitske
-ARG USER_UID=1001
-ARG USER_GID=1002 ## dm group
+ARG USERNAME=pi32
+ARG USER_UID=1000
+ARG USER_GID=1000
 
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
@@ -43,5 +43,5 @@ RUN /env/bin/pip3 freeze
 #COPY . /workdir/.
 ##RUN ls -R /workdir/
 
-WORKDIR /workdir/login
+WORKDIR /workdir/python
 CMD ["gunicorn"  , "--bind", "0.0.0.0:8010", "wsgi:application"]

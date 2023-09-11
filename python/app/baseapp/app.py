@@ -42,19 +42,9 @@ from app.baseapp.libraries import formlibrary as fl
 
 from app.baseapp.libraries import pagecomponents as pc
 
-from app.baseapp.libraries import create_test_data
-
-#app = JupyterDash(__name__,
-#                  ##requests_pathname_prefix= "/",
-#                  external_stylesheets=external_stylesheets,
-#                  meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}],
-#                 suppress_callback_exceptions=True)
-
-
-#app = Dash(__name__, use_pages=True,requests_pathname_prefix='/app/multipage/')
 app = Dash(__name__,
             use_pages=True,
-            requests_pathname_prefix='/login/baseapp/',
+            requests_pathname_prefix='/python/baseapp/',
             external_stylesheets=external_stylesheets,
             meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}],
             ##suppress_callback_exceptions=True,
@@ -70,17 +60,8 @@ server = app.server
 server.config['SECRET_KEY'] = FLASK_SECRET_KEY
 server.config['FLASK_DEBUG'] = 0
 
-#server.config['SESSION_COOKIE_PATH'] =  '/'
-
-## setup session data
-#server.config['SESSION_TYPE'] = 'redis'
-#server.config['SESSION_REDIS'] = redis.from_url('redis://container_redis_1:6379')
-#server_session = Session()
-#server_session.init_app(server)
-
 headertext = 'Dark Matter Tool'
 footertext = 'ACG'
-
 
 pages_container = html.Div([
 	html.H1('Multi-page app with Dash Pages'),
@@ -112,7 +93,3 @@ layout4 = html.Div([pc.page_header_0,
 
 app.layout = layout4
 
-	
-## locally
-#if __name__ == '__main__':
-#    app.run_server(debug=True)

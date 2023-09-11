@@ -44,7 +44,7 @@ from app.baseapp.libraries import pagecomponents as pc
 
 app = Dash(__name__,
             use_pages=True,
-            requests_pathname_prefix='/python/baseapp/',
+            requests_pathname_prefix='/app/python/',
             external_stylesheets=external_stylesheets,
             meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}],
             ##suppress_callback_exceptions=True,

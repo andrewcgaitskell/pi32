@@ -1,8 +1,8 @@
-podman pod stop pod_mariadb
-podman pod rm pod_mariadb
+podman pod stop pod_main
+podman pod rm pod_main
 podman rmi image_mariadb_1
 
-cd /home/pi32/Documents/Code/pi32/mariadb
+cd /home/pi32/Code/pi32/mariadb
 
 uid=${ENV_UID} ##1001
 gid=${ENV_GID} ##1002
@@ -14,7 +14,7 @@ subgidSize=$(( $(podman info --format "{{ range \
 
 
 podman pod create \
---name pod_mariadb \
+--name pod_main \
 --network bridge \
 --publish 3306:3306
 
@@ -34,7 +34,9 @@ podman build \
 
 podman run -dt \
 --name container_mariadb \
---pod pod_mariadb \
+--pod pod_main \
+--user $uid:$gid \
+--volume /home/pi32/Data/mysql:/var/lib/mysql:z \
 localhost/image_mariadb_1:latest
 
 ## --user $uid:$gid \

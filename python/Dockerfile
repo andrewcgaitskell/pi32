@@ -1,41 +1,28 @@
-# pull official base image
 FROM python:3.11.4-bullseye
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install system dependencies
-RUN apt-get update && apt-get -y install vim unzip curl netcat gcc && apt-get clean
+RUN apt-get update && apt-get -y install vim
+RUN apt-get -y install unzip
 
 RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
 RUN apt-get update && apt-get install -y mariadb-server galera-4 mariadb-client libmariadb3 mariadb-backup mariadb-common
 RUN apt-get install -y libmariadb-dev
 
-WORKDIR /workdir/fastapi_alembic/app
+WORKDIR /workdir
 
-#WORKDIR /app
-
-ARG USERNAME=pi32
-ARG USER_UID=1000
-ARG USER_GID=1000 ## dm group
+ARG USERNAME=agaitske
+ARG USER_UID=1001
+ARG USER_GID=1002 ## dm group
 
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
+RUN chown $USER_UID:$USER_GID /workdir
 
-#RUN chmod g+s /app
+#RUN mkdir /workdir/login
+#RUN chown $USER_UID:$USER_GID /workdir/login
 
 RUN mkdir /env
 RUN chown $USER_UID:$USER_GID /env
-RUN chmod g+s /env
-
-#COPY app/ /app/
-
-#RUN chown -R $USER_UID:$USER_GID /app
-
-#RUN ls -la /app/*
 
 USER $USERNAME
 
@@ -49,6 +36,12 @@ RUN /env/bin/python3 --version
 RUN whereis python3
 RUN whereis pip3
 
-COPY ./requirements.txt /env/requirements.txt
+COPY requirements.txt /env/requirements.txt
 RUN /env/bin/pip3 install -r /env/requirements.txt
+
 RUN /env/bin/pip3 freeze
+#COPY . /workdir/.
+##RUN ls -R /workdir/
+
+WORKDIR /workdir/login
+CMD ["gunicorn"  , "--bind", "0.0.0.0:8010", "wsgi:application"]

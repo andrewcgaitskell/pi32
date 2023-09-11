@@ -43,5 +43,4 @@ RUN /env/bin/pip3 freeze
 COPY . /workdir/.
 RUN ls -R /workdir/
 
-WORKDIR /workdir/python
 CMD ["gunicorn"  , "--bind", "0.0.0.0:8010", "wsgi:application"]

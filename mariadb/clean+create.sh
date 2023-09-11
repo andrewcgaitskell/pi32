@@ -16,12 +16,7 @@ subgidSize=$(( $(podman info --format "{{ range \
 podman pod create \
 --name pod_main \
 --network bridge \
---userns-uid-map 0:1:$uid \
---userns-uid-map  $uid:0:1 \
---userns-uid-map  $(($uid+1)):$(($uid+1)):$(($subuidSize-$uid)) \
---userns-gid-map 0:1:$gid \
---userns-gid-map $gid:0:1 \
---userns-gid-map $(($gid+1)):$(($gid+1)):$(($subgidSize-$gid)) \
+--userns keep-id \
 --publish 3306:3306
 
 

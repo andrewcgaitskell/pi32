@@ -19,6 +19,8 @@ podman build \
 
 podman run -dt \
 --name container_python_1 \
+--user $uid:$gid \
+-v /home/pi32/Code/pi32/python/:/workdir \
 localhost/image_python_1:latest
 
 ##--user $uid:$gid \

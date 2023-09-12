@@ -15,8 +15,6 @@ subgidSize=$(( $(podman info --format "{{ range \
 
 podman pod create \
 --name pod_main \
---network bridge \
---userns keep-id \
 --publish 3306:3306
 
 

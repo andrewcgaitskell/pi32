@@ -6,31 +6,31 @@
 https://www.jeremymorgan.com/tutorials/raspberry-pi/install-go-raspberry-pi/
 
 ## script
-        sudo su
-        
-        mkdir /software && cd /software
-        visit https://go.dev/dl/
-        copy link to latest package - right click required package
-        wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
-        extract package
-        tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
-        nano ~/.profile
-        paste
-        PATH=$PATH:/usr/local/go/bin
-        GOPATH=$HOME/go
-        save
-        source ~/.profile
-        go version
-        exit su
-        exit
-        repeat for local user
-        nano ~/.profile
-        paste
-        PATH=$PATH:/usr/local/go/bin
-        GOPATH=$HOME/go
-        save
-        source ~/.profile
-        go version
+    sudo su
+    
+    mkdir /software && cd /software
+    visit https://go.dev/dl/
+    copy link to latest package - right click required package
+    wget https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+    extract package
+    tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+    nano ~/.profile
+    paste
+    PATH=$PATH:/usr/local/go/bin
+    GOPATH=$HOME/go
+    save
+    source ~/.profile
+    go version
+    exit su
+    exit
+    repeat for local user
+    nano ~/.profile
+    paste
+    PATH=$PATH:/usr/local/go/bin
+    GOPATH=$HOME/go
+    save
+    source ~/.profile
+    go version
 
 ## installing latest podman
 

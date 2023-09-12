@@ -13,9 +13,9 @@ subgidSize=$(( $(podman info --format "{{ range \
    .Host.IDMappings.GIDMap }}+{{.Size }}{{end }}" ) - 1 ))
 
 
-podman pod create \
---name pod_main \
---publish 3306:3306
+#podman pod create \
+#--name pod_main \
+#--publish 3306:3306
 
 
 podman build \
@@ -33,7 +33,6 @@ podman build \
 
 podman run -dt \
 --name container_mariadb \
---pod pod_main \
 localhost/image_mariadb_1:latest
 
 #--user $uid:$gid \

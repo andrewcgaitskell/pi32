@@ -63,6 +63,9 @@ https://computingforgeeks.com/how-to-install-podman-on-debian-linux/
     curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/raw/main/f/default-policy.json
     
     apt install -y libapparmor-dev libsystemd-dev
+
+
+    apt install catatonit ## required for infra containers
     
     install podman
     

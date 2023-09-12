@@ -36,9 +36,9 @@ podman build \
 podman run -dt \
 --name container_mariadb \
 --pod pod_main \
---user $uid:$gid \
---volume /home/pi32/Data/mysql:/var/lib/mysql:z \
 localhost/image_mariadb_1:latest
 
+#--user $uid:$gid \
+#--volume /home/pi32/Data/mysql:/var/lib/mysql:z \
 ## --user $uid:$gid \
 ##--volume /home/pi32/Data/mysql:/var/lib/mysql:z \

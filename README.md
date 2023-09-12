@@ -66,6 +66,7 @@ https://computingforgeeks.com/how-to-install-podman-on-debian-linux/
 
 
     apt install catatonit ## required for infra containers
+    apt install slirp4netns ## required for rootless networking
     
     install podman
     

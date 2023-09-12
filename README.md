@@ -2,6 +2,9 @@
 
 # not working!!
 
+Error: cannot get namespace path unless container is running: container is stopped
+
+
 ## install latest go
 
 ### thank you to :

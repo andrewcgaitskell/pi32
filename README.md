@@ -1,5 +1,7 @@
 # pi32
 
+# not working!!
+
 ## install latest go
 
 ### thank you to :
